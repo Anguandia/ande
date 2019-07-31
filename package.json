@@ -1,0 +1,49 @@
+{
+  "name": "ande",
+  "version": "1.0.0",
+  "description": "hguygk",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node ./api/index.js",
+    "test": "export NODE_ENV=test &&  nyc --require @babel/register  mocha ./test/tests.js --timeout 20000 --exit",
+    "build": "rm -rf ./build && babel -d ./build ./api -s",
+    "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
+    "coveralls-coverage": "coveralls < lcov.info",
+    "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
+    "coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anguandia/ande.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anguandia/ande/issues"
+  },
+  "homepage": "https://github.com/Anguandia/ande#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "pg": "^7.12.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.12.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1"
+  }
+}
